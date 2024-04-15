@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class UI extends JFrame implements ActionListener {
     private List<Contact> contacts = new ArrayList<>();
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
@@ -113,17 +114,33 @@ public class UI extends JFrame implements ActionListener {
                 confirmButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        String name = nameField.getText();
-                        String phone = phoneField.getText();
-                        String email = emailField.getText();
-                        String gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
-                        Contact contact = new Contact(name, phone, email, gender);
-                        contacts.add(contact);
-                        listModel.addElement(contact);
-                        newFrame.dispose();
-                        nameField.setText("");
-                        emailField.setText("");
-                        phoneField.setText("");
+                        //перевірки коректного вводу
+                        if (!nameField.getText().isEmpty() && !phoneField.getText().isEmpty() && !emailField.getText().isEmpty()) {
+                                int phone;
+                                String name = nameField.getText();
+                                try {
+                                    phone = Integer.valueOf(phoneField.getText());
+                                }catch (Exception e1){
+                                    confirmButton.setBounds(50,165, 220, 30);
+                                    confirmButton.setText("Телефон має бути цифрами");
+                                    confirmButton.setBackground(Color.red);
+                                    return;
+                                }
+                                String email = emailField.getText();
+                                String gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
+                                Contact contact = new Contact(name, phone, email, gender);
+                                contacts.add(contact);
+                                listModel.addElement(contact);
+                                newFrame.dispose();
+                                nameField.setText("");
+                                emailField.setText("");
+                                phoneField.setText("");
+
+                        }else{
+                            confirmButton.setBounds(50,165, 200, 30);
+                            confirmButton.setText("Заповніть всі поля");
+                            confirmButton.setBackground(Color.red);
+                        }
                     }
                 });
                 break;
@@ -166,7 +183,7 @@ public class UI extends JFrame implements ActionListener {
                     JLabel phoneLabelEdit = new JLabel("Номер телефона:");
                     phoneLabelEdit.setBounds(10, 50, 150, 30);
                     editFrame.add(phoneLabelEdit);
-                    phoneFieldEdit.setText(selectedContact.phone);
+                    phoneFieldEdit.setText(String.valueOf(selectedContact.phone));
                     phoneFieldEdit.setBounds(115, 50, 150, 30);
                     editFrame.add(phoneFieldEdit);
 
@@ -185,14 +202,31 @@ public class UI extends JFrame implements ActionListener {
                     confirmEditButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            selectedContact.name = nameFieldEdit.getText();
-                            selectedContact.phone = phoneFieldEdit.getText();
-                            selectedContact.email = emailFieldEdit.getText();
-                            selectedContact.gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
+                            int phone;
+                            //перевірки коректного вводу
+                            if (!nameFieldEdit.getText().isEmpty() && !phoneFieldEdit.getText().isEmpty() && !emailFieldEdit.getText().isEmpty()) {
 
-                            listModel.set(selectedIndex, selectedContact);
+                                try {
+                                    phone = Integer.valueOf(phoneFieldEdit.getText());
+                                } catch (Exception e1) {
+                                    confirmEditButton.setBounds(50, 165, 220, 30);
+                                    confirmEditButton.setText("Телефон має бути цифрами");
+                                    confirmEditButton.setBackground(Color.red);
+                                    return;
+                                }
+                                selectedContact.phone = phone;
+                                selectedContact.name = nameFieldEdit.getText();
 
-                            editFrame.dispose();
+                                selectedContact.email = emailFieldEdit.getText();
+                                selectedContact.gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
+                                listModel.set(selectedIndex, selectedContact);
+
+                                editFrame.dispose();
+                            }else {
+                                confirmEditButton.setBounds(50,165, 200, 30);
+                                confirmEditButton.setText("Заповніть всі поля");
+                                confirmEditButton.setBackground(Color.red);
+                            }
                         }
                     });
                 }
@@ -202,16 +236,17 @@ public class UI extends JFrame implements ActionListener {
 
     private static class Contact {
         private String name;
-        private String phone;
+        private int phone;
         private String email;
         private String gender;
 
-        public Contact(String name, String phone, String email, String gender) {
+        public Contact(String name, int phone, String email, String gender) {
             this.name = name;
             this.phone = phone;
             this.email = email;
             this.gender = gender;
         }
+
 
 
         @Override
@@ -241,6 +276,7 @@ public class UI extends JFrame implements ActionListener {
             setForeground(isSelected ? list.getSelectionForeground() : list.getForeground());
             return this;
         }
+
     }
 }
 
