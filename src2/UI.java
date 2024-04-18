@@ -1,4 +1,4 @@
-package src;
+package src2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ public class UI extends JFrame implements ActionListener {
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
     private JList<Contact> contactList = new JList<>(listModel);
 
-    //Створюю іньші кнопочки
+    //Створюю інші кнопочки
     private JTextField nameFieldEdit = new JTextField();
     private JTextField phoneFieldEdit = new JTextField();
     private JTextField emailFieldEdit = new JTextField();
@@ -62,6 +62,7 @@ public class UI extends JFrame implements ActionListener {
 
         contactList.setCellRenderer(new MyCellRenderer());
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -277,6 +278,142 @@ public class UI extends JFrame implements ActionListener {
             return this;
         }
 
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public DefaultListModel<Contact> getListModel() {
+        return listModel;
+    }
+
+    public void setListModel(DefaultListModel<Contact> listModel) {
+        this.listModel = listModel;
+    }
+
+    public JList<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(JList<Contact> contactList) {
+        this.contactList = contactList;
+    }
+
+    public JTextField getNameFieldEdit() {
+        return nameFieldEdit;
+    }
+
+    public void setNameFieldEdit(JTextField nameFieldEdit) {
+        this.nameFieldEdit = nameFieldEdit;
+    }
+
+    public JTextField getPhoneFieldEdit() {
+        return phoneFieldEdit;
+    }
+
+    public void setPhoneFieldEdit(JTextField phoneFieldEdit) {
+        this.phoneFieldEdit = phoneFieldEdit;
+    }
+
+    public JTextField getEmailFieldEdit() {
+        return emailFieldEdit;
+    }
+
+    public void setEmailFieldEdit(JTextField emailFieldEdit) {
+        this.emailFieldEdit = emailFieldEdit;
+    }
+
+    public JRadioButton getGenderSelectionManEdit() {
+        return genderSelectionManEdit;
+    }
+
+    public void setGenderSelectionManEdit(JRadioButton genderSelectionManEdit) {
+        this.genderSelectionManEdit = genderSelectionManEdit;
+    }
+
+    public JRadioButton getGenderSelectionWomanEdit() {
+        return genderSelectionWomanEdit;
+    }
+
+    public void setGenderSelectionWomanEdit(JRadioButton genderSelectionWomanEdit) {
+        this.genderSelectionWomanEdit = genderSelectionWomanEdit;
+    }
+
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
+    }
+
+    public JButton getNewContact() {
+        return newContact;
+    }
+
+    public void setNewContact(JButton newContact) {
+        this.newContact = newContact;
+    }
+
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(JButton deleteButton) {
+        this.deleteButton = deleteButton;
+    }
+
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(JButton editButton) {
+        this.editButton = editButton;
+    }
+
+    public JTextField getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(JTextField nameField) {
+        this.nameField = nameField;
+    }
+
+    public JTextField getPhoneField() {
+        return phoneField;
+    }
+
+    public void setPhoneField(JTextField phoneField) {
+        this.phoneField = phoneField;
+    }
+
+    public JTextField getEmailField() {
+        return emailField;
+    }
+
+    public void setEmailField(JTextField emailField) {
+        this.emailField = emailField;
+    }
+
+    public JRadioButton getGenderSelectionMan() {
+        return genderSelectionMan;
+    }
+
+    public void setGenderSelectionMan(JRadioButton genderSelectionMan) {
+        this.genderSelectionMan = genderSelectionMan;
+    }
+
+    public JRadioButton getGenderSelectionWoman() {
+        return genderSelectionWoman;
+    }
+
+    public void setGenderSelectionWoman(JRadioButton genderSelectionWoman) {
+        this.genderSelectionWoman = genderSelectionWoman;
     }
 }
 
