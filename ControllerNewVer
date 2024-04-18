@@ -1,0 +1,94 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControllerNewVer implements Icontroler, ActionListener {
+    Imodel m;
+    IUI ui;
+    UI ui2 = new UI();
+    // Необходимые объекты для работы
+
+    public void Controller() {
+        this.ui = new UI2();
+    }
+
+    public void setM(Imodel m) {
+        this.m = m;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        JButton b = (JButton) e.getSource();
+        ui2.setSelectedIndex(ui2.getContactList().getSelectedIndex());
+        switch (b.getText()) {
+            case "+":
+                ui.add();
+                break;
+            case "Delete":
+                m.delete();
+                break;
+            case "Edit":
+                ui.edit();
+                break;
+            case "Open New Window":
+                openNewWindow();
+                break;
+        }
+    }
+
+    private void openNewWindow() {
+        JFrame newFrame = new JFrame("New Entry");
+        JPanel panel = new JPanel();
+        JTextField nameField = new JTextField(20);
+        JTextField addressField = new JTextField(20);
+        JTextField ageField = new JTextField(20);
+
+        panel.add(new JLabel("Name:"));
+        panel.add(nameField);
+        panel.add(new JLabel("Address:"));
+        panel.add(addressField);
+        panel.add(new JLabel("Age:"));
+        panel.add(ageField);
+
+        JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String address = addressField.getText();
+                int age = Integer.parseInt(ageField.getText());
+                // Добавьте код для сохранения этих данных
+                // Например, вызов метода из модели для добавления новой записи
+            }
+        });
+
+        panel.add(saveButton);
+
+        newFrame.getContentPane().add(panel);
+        newFrame.setSize(300, 200);
+        newFrame.setVisible(true);
+    }
+
+    @Override
+    public void add() {
+        m.add();
+    }
+
+    @Override
+    public void delete() {
+        m.delete();
+    }
+
+    @Override
+    public void edit() {
+        m.edit();
+    }
+
+    public String toString(){
+        return m.toString();
+    }
+
+    @Override
+    public void save() {
+        m.save();
+    }
+}
