@@ -3,16 +3,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControllerNewVer implements Icontroler, ActionListener {
-    Imodel m;
-    IUI ui;
-    UI ui2 = new UI();
+    src3.Imodel m;
+    src3.IUI ui;
+    src.OldUI ui2 = new src.OldUI();
     // Необходимые объекты для работы
 
-    public void Controller() {
-        this.ui = new UI2();
+    public void src3.Controller() {
+        this.ui = new src3.UI();
     }
 
-    public void setM(Imodel m) {
+    public void setM(src3.Imodel m) {
         this.m = m;
     }
 

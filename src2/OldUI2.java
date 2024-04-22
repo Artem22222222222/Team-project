@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UI extends JFrame implements ActionListener {
+public class OldUI2 extends JFrame implements ActionListener {
     private List<Contact> contacts = new ArrayList<>();
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
     private JList<Contact> contactList = new JList<>(listModel);
@@ -32,7 +32,7 @@ public class UI extends JFrame implements ActionListener {
     private JRadioButton genderSelectionMan = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWoman = new JRadioButton("Жінка");
 
-    public UI() {
+    public OldUI2() {
         super("Телефона Книга");
         super.setBounds(250, 300, 650, 550);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,4 +1,4 @@
-package src2;
+package src3;
 
 public interface IUI {
     //src.src3.UI це вигляд програми у функціях -- лише взаємодія з JFrame
