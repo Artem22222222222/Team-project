@@ -34,13 +34,14 @@ public class UI extends JFrame implements IUI {
         mainFrame = new JFrame("Телефона Книга");
         mainFrame.setBounds(250, 300, 650, 550);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setVisible(true);
         this.controller = c;
 
         JPanel grayPanel = new JPanel();
         grayPanel.setBackground(Color.GRAY);
         grayPanel.setPreferredSize(new Dimension(650, 75));
         grayPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        getContentPane().add(grayPanel, BorderLayout.NORTH);
+        mainFrame.getContentPane().add(grayPanel, BorderLayout.NORTH);
 
         grayPanel.add(newContact);
         grayPanel.add(deleteButton);
@@ -60,6 +61,7 @@ public class UI extends JFrame implements IUI {
         base.getContactList().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         base.getContactList().setCellRenderer(new MyCellRenderer());
+        setVisible(true);
     }
     @Override
     public void add() {
@@ -107,8 +109,8 @@ public class UI extends JFrame implements IUI {
         newFrame.add(confirmButton);
 
         confirmButton.addActionListener(controller);
-        controller.add(base);
-        setVisible(true);
+
+
     }
     @Override
     public void edit() {
@@ -241,5 +243,29 @@ public class UI extends JFrame implements IUI {
 
     public void setNewFrame(JFrame newFrame) {
         this.newFrame = newFrame;
+    }
+
+    public Base getBase() {
+        return base;
+    }
+
+    public void setBase(Base base) {
+        this.base = base;
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public void setMainFrame(JFrame mainFrame) {
+        this.mainFrame = mainFrame;
     }
 }

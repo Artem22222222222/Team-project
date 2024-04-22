@@ -2,6 +2,7 @@ package src3;
 
 import src3.Base;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,10 +16,10 @@ public class Controller implements Icontroler, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
+        JButton b = (JButton) e.getSource();
 
-        switch (command) {
-            case "Add":
+        switch (b.getText()) {
+            case "+":
                 ui.add();
                 break;
             case "Delete":
@@ -27,6 +28,8 @@ public class Controller implements Icontroler, ActionListener {
             case "Edit":
                 edit();
                 break;
+            case "Confirm":
+                add( ui.getBase());
         }
     }
 
