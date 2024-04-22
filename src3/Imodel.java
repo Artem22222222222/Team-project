@@ -5,9 +5,9 @@ import src.OldUI;
 public interface Imodel {
     void add(UI ui, Base base);
 
-    void delete();
+    void delete(UI ui, Base base);
 
-    void edit();
+    void edit(UI ui,Base base);
 
     void save();
 }

@@ -23,10 +23,10 @@ public class Controller implements Icontroler, ActionListener {
                 ui.add();
                 break;
             case "Delete":
-                delete();
+                ui.delete();
                 break;
             case "Edit":
-                edit();
+                ui.edit();
                 break;
             case "Confirm":
                 add( ui.getBase());
@@ -40,15 +40,15 @@ public class Controller implements Icontroler, ActionListener {
     }
 
     @Override
-    public void delete() {
+    public void delete(Base base) {
         // Реализация удаления данных из модели
-        model.delete();
+        model.delete(ui, base);
     }
 
     @Override
-    public void edit() {
+    public void edit(Base base) {
         // Реализация редактирования данных в модели
-        model.edit();
+        model.edit(ui, base);
     }
 
     @Override
