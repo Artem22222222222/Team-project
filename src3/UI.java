@@ -117,6 +117,11 @@ public class UI extends JFrame implements IUI {
 
     }
 
+    @Override
+    public void delete() {
+        controller.delete(base);
+    }
+
     public JTextField getNameFieldEdit() {
         return nameFieldEdit;
     }

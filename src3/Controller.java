@@ -30,6 +30,10 @@ public class Controller implements Icontroler, ActionListener {
                 break;
             case "Confirm":
                 add( ui.getBase());
+            case "Телефон має бути цифрами":
+                add( ui.getBase());
+            case "Заповніть всі поля":
+                add( ui.getBase());
         }
     }
 
