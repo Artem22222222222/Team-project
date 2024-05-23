@@ -1,7 +1,5 @@
 package src3;
 
-import src3.Base;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +9,7 @@ public class Controller implements Icontroler, ActionListener {
     private UI ui;
 
     public Controller() {
-        this.ui = new UI(this);
+
     }
 
     @Override
@@ -29,11 +27,11 @@ public class Controller implements Icontroler, ActionListener {
                 ui.edit();
                 break;
             case "Confirm":
-                add( ui.getBase());
+                add( model.base);
             case "Телефон має бути цифрами":
-                add( ui.getBase());
+                add( model.base);
             case "Заповніть всі поля":
-                add( ui.getBase());
+                add( model.base);
         }
     }
 
@@ -69,5 +67,10 @@ public class Controller implements Icontroler, ActionListener {
 
     public void setM(Model model) {
         this.model = model;
+        this.ui = new UI(this);
+    }
+
+    public Model getModel() {
+        return model;
     }
 }

@@ -1,11 +1,13 @@
 package src3;
 
+import src.OldUI;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class UI extends JFrame implements IUI {
+public class UI implements IUI {
     //після відмальовки звертається до Controler
-    private Base base = new Base();
+
     Controller controller;
 
     JFrame newFrame;
@@ -17,7 +19,7 @@ public class UI extends JFrame implements IUI {
     private JRadioButton genderSelectionManEdit = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWomanEdit = new JRadioButton("Жінка");
 
-    int selectedIndex = base.getContactList().getSelectedIndex();
+    int selectedIndex;
 
     //Просто створюю кнопочки
     private JButton newContact = new JButton("+");
@@ -36,6 +38,7 @@ public class UI extends JFrame implements IUI {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
         this.controller = c;
+        selectedIndex  = controller.getModel().base.getContactList().getSelectedIndex();
 
         JPanel grayPanel = new JPanel();
         grayPanel.setBackground(Color.GRAY);
@@ -46,7 +49,7 @@ public class UI extends JFrame implements IUI {
         grayPanel.add(newContact);
         grayPanel.add(deleteButton);
         grayPanel.add(editButton);
-        getContentPane().add(new JScrollPane(base.getContactList()), BorderLayout.CENTER);
+        mainFrame.getContentPane().add(new JScrollPane(controller.getModel().base.getContactList()), BorderLayout.CENTER);
 
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(genderSelectionMan);
@@ -58,10 +61,10 @@ public class UI extends JFrame implements IUI {
         deleteButton.addActionListener(c);
         editButton.addActionListener(c);
         //Роблю кожну строку з інформацією клікабільною
-        base.getContactList().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        controller.getModel().base.getContactList().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        base.getContactList().setCellRenderer(new MyCellRenderer());
-        setVisible(true);
+        controller.getModel().base.getContactList().setCellRenderer(new MyCellRenderer(controller.getModel()));
+
     }
     @Override
     public void add() {
@@ -114,12 +117,12 @@ public class UI extends JFrame implements IUI {
     }
     @Override
     public void edit() {
-
+        mainFrame.repaint();
     }
 
     @Override
     public void delete() {
-        controller.delete(base);
+        controller.delete(controller.getModel().base);
     }
 
     public JTextField getNameFieldEdit() {
@@ -248,14 +251,6 @@ public class UI extends JFrame implements IUI {
 
     public void setNewFrame(JFrame newFrame) {
         this.newFrame = newFrame;
-    }
-
-    public Base getBase() {
-        return base;
-    }
-
-    public void setBase(Base base) {
-        this.base = base;
     }
 
     public Controller getController() {
