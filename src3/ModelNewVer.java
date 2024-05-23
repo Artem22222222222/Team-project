@@ -7,10 +7,10 @@ import java.awt.*;
 import java.io.*;
 import java.util.List;
 
-public class ModelNewVer implements Imodel {
+public class ModelNewVer {
     private Base base = new Base();
 
-    @Override
+//    @Override
     public void add(UI ui, Base base) {
         if (!ui.getNameField().getText().isEmpty() && !ui.getPhoneField().getText().isEmpty() && !ui.getEmailField().getText().isEmpty()) {
             int phone;
@@ -39,14 +39,16 @@ public class ModelNewVer implements Imodel {
         }
     }
 
-    @Override
+
+
+//    @Override
     public void delete(Contact contact) {
         List<Contact> contacts = base.getContacts();
         contacts.remove(contact);
         base.getListModel().removeElement(contact);
     }
 
-    @Override
+//    @Override
     public void edit(Contact oldContact, Contact newContact) {
         List<Contact> contacts = base.getContacts();
         int index = contacts.indexOf(oldContact);
@@ -55,7 +57,6 @@ public class ModelNewVer implements Imodel {
         base.getListModel().addElement(newContact);
     }
 
-    @Override
     public void saveToFile(String filename) {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(filename))) {
             outputStream.writeObject(base.getContacts());
@@ -64,7 +65,6 @@ public class ModelNewVer implements Imodel {
         }
     }
 
-    @Override
     public void loadFromFile(String filename) {
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(filename))) {
             List<Contact> contacts = (List<Contact>) inputStream.readObject();

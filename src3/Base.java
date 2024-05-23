@@ -8,6 +8,11 @@ public class Base {
     private List<Contact> contacts = new ArrayList<>();
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
     private JList<Contact> contactList = new JList<>(listModel);
+    public Base(){
+        Contact contact = new Contact("Artem", 520496, "email", "Чоловік");
+        contacts.add(contact);
+        listModel.addElement(contact);
+    }
 
     public List<Contact> getContacts() {
         return contacts;

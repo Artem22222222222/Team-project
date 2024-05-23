@@ -60,7 +60,7 @@ public class OldUI extends JFrame implements ActionListener {
         //Роблю кожну строку з інформацією клікабільною
         contactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        contactList.setCellRenderer(new MyCellRenderer());
+        contactList.setCellRenderer(new OldMyCellRenderer());
     }
 
 
@@ -257,10 +257,10 @@ public class OldUI extends JFrame implements ActionListener {
         }
     }
 
-    private static class MyCellRenderer extends JLabel implements ListCellRenderer<Contact> {
+    private static class OldMyCellRenderer extends JLabel implements ListCellRenderer<Contact> {
         private static final Font FONT = new Font("Basic", Font.BOLD, 13);
 
-        public MyCellRenderer() {
+        public OldMyCellRenderer() {
             setOpaque(true);
             setFont(FONT);
         }

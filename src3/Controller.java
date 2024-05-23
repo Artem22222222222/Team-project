@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class Controller implements Icontroler, ActionListener {
     private Model model;
     private UI ui;
+    private boolean isadd;
 
     public Controller() {
 
@@ -19,38 +20,24 @@ public class Controller implements Icontroler, ActionListener {
         switch (b.getText()) {
             case "+":
                 ui.add();
+                isadd = true;
                 break;
             case "Delete":
                 ui.delete();
                 break;
             case "Edit":
                 ui.edit();
+                isadd = false;
                 break;
-            case "Confirm":
-                add( model.base);
-            case "Телефон має бути цифрами":
-                add( model.base);
-            case "Заповніть всі поля":
-                add( model.base);
+            case "Confirm", "Телефон має бути цифрами", "Заповніть всі поля":
+                if (isadd)
+                    model.add(ui);
+                else {
+                    model.edit(ui);
+                    System.out.print(2);
+                }
+                break;
         }
-    }
-
-    @Override
-    public void add(Base base) {
-        // Реализация добавления данных в модель
-        model.add(ui, base);
-    }
-
-    @Override
-    public void delete(Base base) {
-        // Реализация удаления данных из модели
-        model.delete(ui, base);
-    }
-
-    @Override
-    public void edit(Base base) {
-        // Реализация редактирования данных в модели
-        model.edit(ui, base);
     }
 
     @Override
@@ -65,12 +52,28 @@ public class Controller implements Icontroler, ActionListener {
         model.save();
     }
 
-    public void setM(Model model) {
+    public void setModel(Model model) {
         this.model = model;
         this.ui = new UI(this);
     }
 
     public Model getModel() {
         return model;
+    }
+
+    public UI getUi() {
+        return ui;
+    }
+
+    public void setUi(UI ui) {
+        this.ui = ui;
+    }
+
+    public boolean isIsadd() {
+        return isadd;
+    }
+
+    public void setIsadd(boolean isadd) {
+        this.isadd = isadd;
     }
 }

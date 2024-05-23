@@ -3,10 +3,10 @@ package src3;
 import src.OldUI;
 
 public interface Imodel {
-    void add(UI ui, Base base);
+    void add(UI ui);
 
-    void delete(Contact contact);
+    void delete(UI ui);
 
-    void edit(Contact oldContact, Contact newContact);
+    void edit(UI ui);
 
 }

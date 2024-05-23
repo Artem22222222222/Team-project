@@ -12,14 +12,13 @@ public class UI implements IUI {
 
     JFrame newFrame;
     JFrame mainFrame;
+    JFrame editFrame;
     //Створюю інші кнопочки
     private JTextField nameFieldEdit = new JTextField();
     private JTextField phoneFieldEdit = new JTextField();
     private JTextField emailFieldEdit = new JTextField();
     private JRadioButton genderSelectionManEdit = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWomanEdit = new JRadioButton("Жінка");
-
-    int selectedIndex;
 
     //Просто створюю кнопочки
     private JButton newContact = new JButton("+");
@@ -31,6 +30,9 @@ public class UI implements IUI {
     private JRadioButton genderSelectionMan = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWoman = new JRadioButton("Жінка");
     private JButton confirmButton;
+    private JButton confirmEditButton;
+
+    int selectedIndex;
 
     public UI(Controller c) {
         mainFrame = new JFrame("Телефона Книга");
@@ -38,13 +40,14 @@ public class UI implements IUI {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setVisible(true);
         this.controller = c;
-        selectedIndex  = controller.getModel().base.getContactList().getSelectedIndex();
 
         JPanel grayPanel = new JPanel();
         grayPanel.setBackground(Color.GRAY);
         grayPanel.setPreferredSize(new Dimension(650, 75));
         grayPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         mainFrame.getContentPane().add(grayPanel, BorderLayout.NORTH);
+        confirmEditButton = new JButton("Confirm");
+        confirmEditButton.addActionListener(controller);
 
         grayPanel.add(newContact);
         grayPanel.add(deleteButton);
@@ -117,12 +120,60 @@ public class UI implements IUI {
     }
     @Override
     public void edit() {
-        mainFrame.repaint();
+        selectedIndex = controller.getModel().base.getContactList().getSelectedIndex();
+        if (selectedIndex != -1) {
+            Contact selectedContact = controller.getModel().base.getContacts().get(selectedIndex);
+            // Робимо нове вікно для редагування контактів
+            editFrame = new JFrame("Редагувати контакт");
+            editFrame.setBounds(200, 250, 350, 250);
+            editFrame.setLayout(null);
+            editFrame.setVisible(true);
+
+            JLabel nameLabelEdit = new JLabel("Ім'я:");
+            nameLabelEdit.setBounds(10, 15, 75, 30);
+            editFrame.add(nameLabelEdit);
+            nameFieldEdit.setText(selectedContact.getName());
+            nameFieldEdit.setBounds(40, 15, 150, 30);
+            editFrame.add(nameFieldEdit);
+
+            JLabel genderLabelEdit = new JLabel("Виберіть стать :");
+            genderLabelEdit.setBounds(10, 125, 105, 25);
+            editFrame.add(genderLabelEdit);
+
+            genderSelectionMan.setBounds(100, 125, 75, 25);
+            genderSelectionWoman.setBounds(175, 125, 75, 25);
+            editFrame.add(genderSelectionMan);
+            editFrame.add(genderSelectionWoman);
+            if (selectedContact.getGender().equals("Чоловік")) {
+                genderSelectionMan.setSelected(true);
+            } else {
+                genderSelectionWoman.setSelected(true);
+            }
+
+            JLabel phoneLabelEdit = new JLabel("Номер телефона:");
+            phoneLabelEdit.setBounds(10, 50, 150, 30);
+            editFrame.add(phoneLabelEdit);
+            phoneFieldEdit.setText(String.valueOf(selectedContact.getPhone()));
+            phoneFieldEdit.setBounds(115, 50, 150, 30);
+            editFrame.add(phoneFieldEdit);
+
+            JLabel emailLabelEdit = new JLabel("Електронна пошта:");
+            emailLabelEdit.setBounds(10, 85, 150, 30);
+            editFrame.add(emailLabelEdit);
+            emailFieldEdit.setText(selectedContact.getEmail());
+            emailFieldEdit.setBounds(125, 85, 150, 30);
+            editFrame.add(emailFieldEdit);
+
+            confirmEditButton.setBackground(Color.GREEN);
+            confirmEditButton.setBounds(200, 165, 100, 30);
+            editFrame.add(confirmEditButton);
+        }
     }
+
 
     @Override
     public void delete() {
-        controller.delete(controller.getModel().base);
+        controller.getModel().delete(this);
     }
 
     public JTextField getNameFieldEdit() {
@@ -163,14 +214,6 @@ public class UI implements IUI {
 
     public void setGenderSelectionWomanEdit(JRadioButton genderSelectionWomanEdit) {
         this.genderSelectionWomanEdit = genderSelectionWomanEdit;
-    }
-
-    public int getSelectedIndex() {
-        return selectedIndex;
-    }
-
-    public void setSelectedIndex(int selectedIndex) {
-        this.selectedIndex = selectedIndex;
     }
 
     public JButton getNewContact() {
@@ -267,5 +310,13 @@ public class UI implements IUI {
 
     public void setMainFrame(JFrame mainFrame) {
         this.mainFrame = mainFrame;
+    }
+
+    public JFrame getEditFrame() {
+        return editFrame;
+    }
+
+    public void setEditFrame(JFrame editFrame) {
+        this.editFrame = editFrame;
     }
 }

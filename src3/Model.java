@@ -25,7 +25,7 @@ public class Model implements Imodel{
     }
 
 
-    public void add(UI ui, Base base) {
+    public void add(UI ui) {
         if (!ui.getNameField().getText().isEmpty() && !ui.getPhoneField().getText().isEmpty() && !ui.getEmailField().getText().isEmpty()) {
             name = ui.getNameField().getText();
             try {
@@ -54,59 +54,67 @@ public class Model implements Imodel{
         }
     }
 
-    @Override
-    public void delete(Contact contact) {
-        List<Contact> contacts = base.getContacts();
-        contacts.remove(contact);
-        base.getListModel().removeElement(contact);
-    }
+//    @Override
+//    public void delete(Controller controller) {
+////        List<Contact> contacts = base.getContacts();
+////        base.getContacts().remove(contact);
+////        base.getListModel().removeElement(contact);
+//        if (controller.getUi().selectedIndex != -1) {
+//            base.getContacts().remove(controller.getUi().selectedIndex);
+//            base.getListModel().remove(controller.getUi().selectedIndex);
+//        }
+//    }
 
-    @Override
-    public void edit(Contact oldContact, Contact newContact) {
-        List<Contact> contacts = base.getContacts();
-        int index = contacts.indexOf(oldContact);
-        contacts.set(index, newContact);
-        base.getListModel().removeElement(oldContact);
-        base.getListModel().addElement(newContact);
-    }
+//    @Override
+//    public void edit(Contact oldContact, Contact newContact) {
+//        List<Contact> contacts = base.getContacts();
+//        int index = contacts.indexOf(oldContact);
+//        contacts.set(index, newContact);
+//        base.getListModel().removeElement(oldContact);
+//        base.getListModel().addElement(newContact);
+//    }
 
 
-    public void delete(UI ui, Base base) {
-        if (ui.selectedIndex != -1) {
-            base.getContacts().remove(ui.selectedIndex);
-            base.getListModel().remove(ui.selectedIndex);
+    public void delete(UI ui) {
+        if (base.getContactList().getSelectedIndex() != -1) {
+            base.getContacts().remove(base.getContactList().getSelectedIndex());
+            base.getListModel().remove(base.getContactList().getSelectedIndex());
         }
     }
 
-
-    public void edit(UI ui, Base base) {
-        Contact selectedContact = base.getContacts().get(ui.selectedIndex);
-            int phone;
-            if (!ui.getNameFieldEdit().getText().isEmpty() && !ui.getPhoneFieldEdit().getText().isEmpty() && !ui.getEmailFieldEdit().getText().isEmpty()) {
-
-                try {
-                    phone = Integer.valueOf(ui.getPhoneFieldEdit().getText());
-                } catch (Exception e1) {
-                    ui.getConfirmButton().setBounds(50, 165, 220, 30);
-                    ui.getConfirmButton().setText("Телефон має бути цифрами");
-                    ui.getConfirmButton().setBackground(Color.red);
-                    return;
-                }
-                selectedContact.setPhone(phone);
-                selectedContact.setName(ui.getPhoneField().getText());
-
-                selectedContact.setEmail(ui.getEmailFieldEdit().getText());
-                selectedContact.setGender(ui.getGenderSelectionMan().isSelected() ? "Чоловік" : "Жінка");
-                base.getListModel().set(ui.selectedIndex,base.getContacts().get(ui.getSelectedIndex()));
-
-                ui.getNewFrame().dispose();
-            } else {
-                ui.getConfirmButton().setBounds(50, 165, 200, 30);
-                ui.getConfirmButton().setText("Заповніть всі поля");
-                ui.getConfirmButton().setBackground(Color.red);
-            }
-        }
-
+//    @Override
+//    public void edit(UI ui) {
+//            Contact selectedContact = base.getContacts().get(base.getContactList().getSelectedIndex());
+//            int phone;
+//            if (!ui.getNameFieldEdit().getText().isEmpty() && !ui.getPhoneFieldEdit().getText().isEmpty() && !ui.getEmailFieldEdit().getText().isEmpty()) {
+//
+//                try {
+//                    phone = Integer.valueOf(ui.getPhoneFieldEdit().getText());
+//                } catch (Exception e1) {
+//                    ui.getConfirmButton().setBounds(50, 165, 220, 30);
+//                    ui.getConfirmButton().setText("Телефон має бути цифрами");
+//                    ui.getConfirmButton().setBackground(Color.red);
+//                    return;
+//                }
+//                selectedContact.setPhone(phone);
+//                selectedContact.setName(ui.getPhoneField().getText());
+//
+//                selectedContact.setEmail(ui.getEmailFieldEdit().getText());
+//                selectedContact.setGender(ui.getGenderSelectionMan().isSelected() ? "Чоловік" : "Жінка");
+//                base.getListModel().set(base.getContactList().getSelectedIndex(), selectedContact);
+//
+//                ui.getEditFrame().dispose();
+//            } else {
+//                ui.getConfirmButton().setBounds(50, 165, 200, 30);
+//                ui.getConfirmButton().setText("Заповніть всі поля");
+//                ui.getConfirmButton().setBackground(Color.red);
+//            }
+//        }
+    @Override
+    public void edit(UI ui) {
+        System.out.print(1);
+        ui.getEditFrame().dispose();
+    }
 
     public void save() {
 
