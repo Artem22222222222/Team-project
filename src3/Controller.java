@@ -5,18 +5,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controller implements Icontroler, ActionListener {
+    //зміння для зв'язку класів
     private Model model;
     private UI ui;
     private boolean isadd;
 
-    public Controller() {
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton b = (JButton) e.getSource();
-
+        //обробка основних кнопок
         switch (b.getText()) {
             case "+":
                 ui.add();
@@ -29,17 +27,17 @@ public class Controller implements Icontroler, ActionListener {
                 ui.edit();
                 isadd = false;
                 break;
+                //обробка кнопок підтвердження
             case "Confirm", "Телефон має бути цифрами", "Заповніть всі поля":
                 if (isadd)
                     model.add(ui);
                 else {
                     model.edit(ui);
-                    System.out.print(2);
                 }
                 break;
         }
     }
-
+//функції для зв'язку між класами
     @Override
     public String toString() {
         // Реализация преобразования данных в строку

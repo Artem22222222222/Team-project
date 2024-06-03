@@ -35,6 +35,7 @@ public class UI implements IUI {
     int selectedIndex;
 
     public UI(Controller c) {
+        //створення вікна та ініціалізація
         mainFrame = new JFrame("Телефона Книга");
         mainFrame.setBounds(250, 300, 650, 550);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,6 +72,7 @@ public class UI implements IUI {
     }
     @Override
     public void add() {
+        //створення вікна
         newFrame = new JFrame("Додати Контакт");
         newFrame.setBounds(200, 250, 350, 250);
         newFrame.setLayout(null);
@@ -120,6 +122,7 @@ public class UI implements IUI {
     }
     @Override
     public void edit() {
+        //створення вікна
         selectedIndex = controller.getModel().base.getContactList().getSelectedIndex();
         if (selectedIndex != -1) {
             Contact selectedContact = controller.getModel().base.getContacts().get(selectedIndex);
@@ -173,6 +176,7 @@ public class UI implements IUI {
 
     @Override
     public void delete() {
+        //функція поки без візуалки
         controller.getModel().delete(this);
     }
 

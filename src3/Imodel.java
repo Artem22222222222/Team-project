@@ -9,4 +9,6 @@ public interface Imodel {
 
     void edit(UI ui);
 
+    void save();
+
 }

@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.List;
 
 public class ModelNewVer {
+    //поки неактивний клас
     private Base base = new Base();
 
 //    @Override
