@@ -1,8 +1,5 @@
 package src3;
 
-import src2.Model;
-import src3.Contact;
-
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,4 +1,4 @@
-package src2;
+package forDelete.src;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OldUI2 extends JFrame implements ActionListener {
+public class OldUI extends JFrame implements ActionListener {
     private List<Contact> contacts = new ArrayList<>();
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
     private JList<Contact> contactList = new JList<>(listModel);
@@ -32,7 +32,7 @@ public class OldUI2 extends JFrame implements ActionListener {
     private JRadioButton genderSelectionMan = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWoman = new JRadioButton("Жінка");
 
-    public OldUI2() {
+    public OldUI() {
         super("Телефона Книга");
         super.setBounds(250, 300, 650, 550);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +60,7 @@ public class OldUI2 extends JFrame implements ActionListener {
         //Роблю кожну строку з інформацією клікабільною
         contactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        contactList.setCellRenderer(new MyCellRenderer());
+        contactList.setCellRenderer(new OldMyCellRenderer());
     }
 
 
@@ -117,25 +117,25 @@ public class OldUI2 extends JFrame implements ActionListener {
                     public void actionPerformed(ActionEvent e) {
                         //перевірки коректного вводу
                         if (!nameField.getText().isEmpty() && !phoneField.getText().isEmpty() && !emailField.getText().isEmpty()) {
-                                int phone;
-                                String name = nameField.getText();
-                                try {
-                                    phone = Integer.valueOf(phoneField.getText());
-                                }catch (Exception e1){
-                                    confirmButton.setBounds(50,165, 220, 30);
-                                    confirmButton.setText("Телефон має бути цифрами");
-                                    confirmButton.setBackground(Color.red);
-                                    return;
-                                }
-                                String email = emailField.getText();
-                                String gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
-                                Contact contact = new Contact(name, phone, email, gender);
-                                contacts.add(contact);
-                                listModel.addElement(contact);
-                                newFrame.dispose();
-                                nameField.setText("");
-                                emailField.setText("");
-                                phoneField.setText("");
+                            int phone;
+                            String name = nameField.getText();
+                            try {
+                                phone = Integer.valueOf(phoneField.getText());
+                            }catch (Exception e1){
+                                confirmButton.setBounds(50,165, 220, 30);
+                                confirmButton.setText("Телефон має бути цифрами");
+                                confirmButton.setBackground(Color.red);
+                                return;
+                            }
+                            String email = emailField.getText();
+                            String gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
+                            Contact contact = new Contact(name, phone, email, gender);
+                            contacts.add(contact);
+                            listModel.addElement(contact);
+                            newFrame.dispose();
+                            nameField.setText("");
+                            emailField.setText("");
+                            phoneField.setText("");
 
                         }else{
                             confirmButton.setBounds(50,165, 200, 30);
@@ -257,10 +257,10 @@ public class OldUI2 extends JFrame implements ActionListener {
         }
     }
 
-    private static class MyCellRenderer extends JLabel implements ListCellRenderer<Contact> {
+    private static class OldMyCellRenderer extends JLabel implements ListCellRenderer<Contact> {
         private static final Font FONT = new Font("Basic", Font.BOLD, 13);
 
-        public MyCellRenderer() {
+        public OldMyCellRenderer() {
             setOpaque(true);
             setFont(FONT);
         }
@@ -416,4 +416,3 @@ public class OldUI2 extends JFrame implements ActionListener {
         this.genderSelectionWoman = genderSelectionWoman;
     }
 }
-

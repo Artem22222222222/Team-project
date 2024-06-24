@@ -1,4 +1,4 @@
-package src2;
+package forDelete.src.src2;
 
 public class Contact {//переніс клас для логічної взємодії коду
     private String name;

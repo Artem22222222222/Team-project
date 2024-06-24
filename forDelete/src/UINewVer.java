@@ -1,4 +1,4 @@
-package src;
+package forDelete.src;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class OldUI extends JFrame implements ActionListener {
+public class UINewVer extends JFrame implements ActionListener {
     private List<Contact> contacts = new ArrayList<>();
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
     private JList<Contact> contactList = new JList<>(listModel);
 
-    //Створюю інші кнопочки
+    //Створюю іньші кнопочки
     private JTextField nameFieldEdit = new JTextField();
     private JTextField phoneFieldEdit = new JTextField();
     private JTextField emailFieldEdit = new JTextField();
@@ -32,7 +32,7 @@ public class OldUI extends JFrame implements ActionListener {
     private JRadioButton genderSelectionMan = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWoman = new JRadioButton("Жінка");
 
-    public OldUI() {
+    public UINewVer() {
         super("Телефона Книга");
         super.setBounds(250, 300, 650, 550);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,9 +60,8 @@ public class OldUI extends JFrame implements ActionListener {
         //Роблю кожну строку з інформацією клікабільною
         contactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        contactList.setCellRenderer(new OldMyCellRenderer());
+        contactList.setCellRenderer(new MyCellRenderer());
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -235,6 +234,15 @@ public class OldUI extends JFrame implements ActionListener {
         }
     }
 
+    public AbstractButton getButton() {
+
+        return null;
+    }
+
+    public AbstractButton getTextField() {
+        return null;
+    }
+
     private static class Contact {
         private String name;
         private int phone;
@@ -257,10 +265,10 @@ public class OldUI extends JFrame implements ActionListener {
         }
     }
 
-    private static class OldMyCellRenderer extends JLabel implements ListCellRenderer<Contact> {
+    private static class MyCellRenderer extends JLabel implements ListCellRenderer<Contact> {
         private static final Font FONT = new Font("Basic", Font.BOLD, 13);
 
-        public OldMyCellRenderer() {
+        public MyCellRenderer() {
             setOpaque(true);
             setFont(FONT);
         }
@@ -278,141 +286,5 @@ public class OldUI extends JFrame implements ActionListener {
             return this;
         }
 
-    }
-
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
-    public DefaultListModel<Contact> getListModel() {
-        return listModel;
-    }
-
-    public void setListModel(DefaultListModel<Contact> listModel) {
-        this.listModel = listModel;
-    }
-
-    public JList<Contact> getContactList() {
-        return contactList;
-    }
-
-    public void setContactList(JList<Contact> contactList) {
-        this.contactList = contactList;
-    }
-
-    public JTextField getNameFieldEdit() {
-        return nameFieldEdit;
-    }
-
-    public void setNameFieldEdit(JTextField nameFieldEdit) {
-        this.nameFieldEdit = nameFieldEdit;
-    }
-
-    public JTextField getPhoneFieldEdit() {
-        return phoneFieldEdit;
-    }
-
-    public void setPhoneFieldEdit(JTextField phoneFieldEdit) {
-        this.phoneFieldEdit = phoneFieldEdit;
-    }
-
-    public JTextField getEmailFieldEdit() {
-        return emailFieldEdit;
-    }
-
-    public void setEmailFieldEdit(JTextField emailFieldEdit) {
-        this.emailFieldEdit = emailFieldEdit;
-    }
-
-    public JRadioButton getGenderSelectionManEdit() {
-        return genderSelectionManEdit;
-    }
-
-    public void setGenderSelectionManEdit(JRadioButton genderSelectionManEdit) {
-        this.genderSelectionManEdit = genderSelectionManEdit;
-    }
-
-    public JRadioButton getGenderSelectionWomanEdit() {
-        return genderSelectionWomanEdit;
-    }
-
-    public void setGenderSelectionWomanEdit(JRadioButton genderSelectionWomanEdit) {
-        this.genderSelectionWomanEdit = genderSelectionWomanEdit;
-    }
-
-    public int getSelectedIndex() {
-        return selectedIndex;
-    }
-
-    public void setSelectedIndex(int selectedIndex) {
-        this.selectedIndex = selectedIndex;
-    }
-
-    public JButton getNewContact() {
-        return newContact;
-    }
-
-    public void setNewContact(JButton newContact) {
-        this.newContact = newContact;
-    }
-
-    public JButton getDeleteButton() {
-        return deleteButton;
-    }
-
-    public void setDeleteButton(JButton deleteButton) {
-        this.deleteButton = deleteButton;
-    }
-
-    public JButton getEditButton() {
-        return editButton;
-    }
-
-    public void setEditButton(JButton editButton) {
-        this.editButton = editButton;
-    }
-
-    public JTextField getNameField() {
-        return nameField;
-    }
-
-    public void setNameField(JTextField nameField) {
-        this.nameField = nameField;
-    }
-
-    public JTextField getPhoneField() {
-        return phoneField;
-    }
-
-    public void setPhoneField(JTextField phoneField) {
-        this.phoneField = phoneField;
-    }
-
-    public JTextField getEmailField() {
-        return emailField;
-    }
-
-    public void setEmailField(JTextField emailField) {
-        this.emailField = emailField;
-    }
-
-    public JRadioButton getGenderSelectionMan() {
-        return genderSelectionMan;
-    }
-
-    public void setGenderSelectionMan(JRadioButton genderSelectionMan) {
-        this.genderSelectionMan = genderSelectionMan;
-    }
-
-    public JRadioButton getGenderSelectionWoman() {
-        return genderSelectionWoman;
-    }
-
-    public void setGenderSelectionWoman(JRadioButton genderSelectionWoman) {
-        this.genderSelectionWoman = genderSelectionWoman;
     }
 }

@@ -1,7 +1,5 @@
 package src3;
 
-import src.OldUI;
-
 public interface Imodel {
     void add(UI ui);
 
@@ -9,6 +7,5 @@ public interface Imodel {
 
     void edit(UI ui);
 
-    void save();
 
 }

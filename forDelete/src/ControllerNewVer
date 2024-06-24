@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControllerNewVer implements Icontroler, ActionListener {
+public class ControllerNewVer implements forDelete.src.Icontroler, ActionListener {
     src3.Imodel m;
     src3.IUI ui;
-    src.OldUI ui2 = new src.OldUI();
+    forDelete.src.OldUI ui2 = new forDelete.src.OldUI();
     // Необходимые объекты для работы
 
     public void src3.Controller() {

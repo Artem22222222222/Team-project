@@ -1,4 +1,4 @@
-package src2;
+package forDelete.src.src2;
 
 public interface Imodel {
     //src3.Model це обрахунки програми у функціях -- лише взаємодія з данними

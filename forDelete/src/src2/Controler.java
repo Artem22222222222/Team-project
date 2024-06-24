@@ -1,6 +1,6 @@
-//package src2;
+//package forDelete.src.src2;
 //
-//import src3.Icontroler;
+//import src3.forDelete.src.Icontroler;
 //
 //import javax.swing.*;
 //import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@
 //        this.m = m;
 //    }
 //
-//    public void actionPerformed(ActionEvent e) {//переніс основний ActionListener з src.src3.UI
+//    public void actionPerformed(ActionEvent e) {//переніс основний ActionListener з forDelete.src.src3.UI
 //        JButton b = (JButton) e.getSource();
 //        ui2.setSelectedIndex(ui2.getContactList().getSelectedIndex());
 //        switch (b.getText()) {
@@ -38,7 +38,7 @@
 //        }
 //    }
 //
-//    //функції виликаються з src.src3.UI та звертаються до src3.Model
+//    //функції виликаються з forDelete.src.src3.UI та звертаються до src3.Model
 //    @Override
 //    public void add() {
 //        m.add();

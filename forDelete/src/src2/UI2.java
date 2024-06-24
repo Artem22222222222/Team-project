@@ -1,4 +1,4 @@
-package src2;
+package forDelete.src.src2;
 
 public class UI2 implements IUI{
     //після відмальовки звертається до Controler

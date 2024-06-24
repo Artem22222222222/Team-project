@@ -1,4 +1,4 @@
-package src;
+package forDelete.src.src2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UINewVer extends JFrame implements ActionListener {
+public class OldUI2 extends JFrame implements ActionListener {
     private List<Contact> contacts = new ArrayList<>();
     private DefaultListModel<Contact> listModel = new DefaultListModel<>();
     private JList<Contact> contactList = new JList<>(listModel);
 
-    //Створюю іньші кнопочки
+    //Створюю інші кнопочки
     private JTextField nameFieldEdit = new JTextField();
     private JTextField phoneFieldEdit = new JTextField();
     private JTextField emailFieldEdit = new JTextField();
@@ -32,7 +32,7 @@ public class UINewVer extends JFrame implements ActionListener {
     private JRadioButton genderSelectionMan = new JRadioButton("Чоловік");
     private JRadioButton genderSelectionWoman = new JRadioButton("Жінка");
 
-    public UINewVer() {
+    public OldUI2() {
         super("Телефона Книга");
         super.setBounds(250, 300, 650, 550);
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,6 +62,7 @@ public class UINewVer extends JFrame implements ActionListener {
 
         contactList.setCellRenderer(new MyCellRenderer());
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -116,25 +117,25 @@ public class UINewVer extends JFrame implements ActionListener {
                     public void actionPerformed(ActionEvent e) {
                         //перевірки коректного вводу
                         if (!nameField.getText().isEmpty() && !phoneField.getText().isEmpty() && !emailField.getText().isEmpty()) {
-                            int phone;
-                            String name = nameField.getText();
-                            try {
-                                phone = Integer.valueOf(phoneField.getText());
-                            }catch (Exception e1){
-                                confirmButton.setBounds(50,165, 220, 30);
-                                confirmButton.setText("Телефон має бути цифрами");
-                                confirmButton.setBackground(Color.red);
-                                return;
-                            }
-                            String email = emailField.getText();
-                            String gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
-                            Contact contact = new Contact(name, phone, email, gender);
-                            contacts.add(contact);
-                            listModel.addElement(contact);
-                            newFrame.dispose();
-                            nameField.setText("");
-                            emailField.setText("");
-                            phoneField.setText("");
+                                int phone;
+                                String name = nameField.getText();
+                                try {
+                                    phone = Integer.valueOf(phoneField.getText());
+                                }catch (Exception e1){
+                                    confirmButton.setBounds(50,165, 220, 30);
+                                    confirmButton.setText("Телефон має бути цифрами");
+                                    confirmButton.setBackground(Color.red);
+                                    return;
+                                }
+                                String email = emailField.getText();
+                                String gender = genderSelectionMan.isSelected() ? "Чоловік" : "Жінка";
+                                Contact contact = new Contact(name, phone, email, gender);
+                                contacts.add(contact);
+                                listModel.addElement(contact);
+                                newFrame.dispose();
+                                nameField.setText("");
+                                emailField.setText("");
+                                phoneField.setText("");
 
                         }else{
                             confirmButton.setBounds(50,165, 200, 30);
@@ -234,15 +235,6 @@ public class UINewVer extends JFrame implements ActionListener {
         }
     }
 
-    public AbstractButton getButton() {
-
-        return null;
-    }
-
-    public AbstractButton getTextField() {
-        return null;
-    }
-
     private static class Contact {
         private String name;
         private int phone;
@@ -287,4 +279,141 @@ public class UINewVer extends JFrame implements ActionListener {
         }
 
     }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public DefaultListModel<Contact> getListModel() {
+        return listModel;
+    }
+
+    public void setListModel(DefaultListModel<Contact> listModel) {
+        this.listModel = listModel;
+    }
+
+    public JList<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(JList<Contact> contactList) {
+        this.contactList = contactList;
+    }
+
+    public JTextField getNameFieldEdit() {
+        return nameFieldEdit;
+    }
+
+    public void setNameFieldEdit(JTextField nameFieldEdit) {
+        this.nameFieldEdit = nameFieldEdit;
+    }
+
+    public JTextField getPhoneFieldEdit() {
+        return phoneFieldEdit;
+    }
+
+    public void setPhoneFieldEdit(JTextField phoneFieldEdit) {
+        this.phoneFieldEdit = phoneFieldEdit;
+    }
+
+    public JTextField getEmailFieldEdit() {
+        return emailFieldEdit;
+    }
+
+    public void setEmailFieldEdit(JTextField emailFieldEdit) {
+        this.emailFieldEdit = emailFieldEdit;
+    }
+
+    public JRadioButton getGenderSelectionManEdit() {
+        return genderSelectionManEdit;
+    }
+
+    public void setGenderSelectionManEdit(JRadioButton genderSelectionManEdit) {
+        this.genderSelectionManEdit = genderSelectionManEdit;
+    }
+
+    public JRadioButton getGenderSelectionWomanEdit() {
+        return genderSelectionWomanEdit;
+    }
+
+    public void setGenderSelectionWomanEdit(JRadioButton genderSelectionWomanEdit) {
+        this.genderSelectionWomanEdit = genderSelectionWomanEdit;
+    }
+
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
+    public void setSelectedIndex(int selectedIndex) {
+        this.selectedIndex = selectedIndex;
+    }
+
+    public JButton getNewContact() {
+        return newContact;
+    }
+
+    public void setNewContact(JButton newContact) {
+        this.newContact = newContact;
+    }
+
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(JButton deleteButton) {
+        this.deleteButton = deleteButton;
+    }
+
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(JButton editButton) {
+        this.editButton = editButton;
+    }
+
+    public JTextField getNameField() {
+        return nameField;
+    }
+
+    public void setNameField(JTextField nameField) {
+        this.nameField = nameField;
+    }
+
+    public JTextField getPhoneField() {
+        return phoneField;
+    }
+
+    public void setPhoneField(JTextField phoneField) {
+        this.phoneField = phoneField;
+    }
+
+    public JTextField getEmailField() {
+        return emailField;
+    }
+
+    public void setEmailField(JTextField emailField) {
+        this.emailField = emailField;
+    }
+
+    public JRadioButton getGenderSelectionMan() {
+        return genderSelectionMan;
+    }
+
+    public void setGenderSelectionMan(JRadioButton genderSelectionMan) {
+        this.genderSelectionMan = genderSelectionMan;
+    }
+
+    public JRadioButton getGenderSelectionWoman() {
+        return genderSelectionWoman;
+    }
+
+    public void setGenderSelectionWoman(JRadioButton genderSelectionWoman) {
+        this.genderSelectionWoman = genderSelectionWoman;
+    }
 }
+

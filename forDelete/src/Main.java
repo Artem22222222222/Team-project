@@ -1,6 +1,6 @@
-package src;
+package forDelete.src;
 
-import src2.OldUI2;
+import forDelete.src.src2.OldUI2;
 
 public class Main {
     public static void main(String[] args) {

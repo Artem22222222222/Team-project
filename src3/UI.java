@@ -1,7 +1,5 @@
 package src3;
 
-import src.OldUI;
-
 import javax.swing.*;
 import java.awt.*;
 

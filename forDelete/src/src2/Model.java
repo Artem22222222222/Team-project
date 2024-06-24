@@ -1,4 +1,4 @@
-package src2;
+package forDelete.src.src2;
 
 public class Model implements Imodel{
 
