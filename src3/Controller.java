@@ -47,7 +47,7 @@ public class Controller implements Icontroler, ActionListener {
     @Override
     public void save() {
         // Реализация сохранения данных
-        model.save();
+        model.base.save();
     }
 
     public void setModel(Model model) {
